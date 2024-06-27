@@ -11,6 +11,8 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
+import { ClerkLoaded, ClerkLoading, UserButton } from '@clerk/nextjs';
+import { Loader2 } from 'lucide-react';
 
 const links = [
   {
@@ -114,6 +116,14 @@ export const Navigation = () => {
               </NavigationMenuContent>
             </NavigationMenuItem>
           ))}
+
+          <ClerkLoading>
+            <Loader2 className='animate-spin' />
+          </ClerkLoading>
+
+          <ClerkLoaded>
+            <UserButton afterSignOutUrl='/' />
+          </ClerkLoaded>
         </NavigationMenuList>
       </NavigationMenu>
     </nav>
