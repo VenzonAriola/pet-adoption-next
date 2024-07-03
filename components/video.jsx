@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
 import { Button } from './ui/button';
+import Link from 'next/link';
 
 export const Video = ({ videoUrl, type }) => {
   const pet = type.toLowerCase();
@@ -40,8 +41,9 @@ export const Video = ({ videoUrl, type }) => {
           variant='outline'
           className='hero-btn w-8/12 translate-y-[150px] rounded-full border bg-white py-7 uppercase tracking-wider text-black opacity-0 hover:bg-transparent hover:text-white'
           size='lg'
+          asChild
         >
-          Meet our {type}
+          <Link href={type === 'Dogs' ? '/dogs' : 'cats'}>Meet our {type}</Link>
         </Button>
       </div>
     </div>

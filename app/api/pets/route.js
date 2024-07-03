@@ -5,6 +5,7 @@ export async function GET(req) {
   await dbConnect();
   try {
     const pets = await Pet.find({});
+
     return new Response(JSON.stringify({ success: true, data: pets }), {
       status: 200,
     });

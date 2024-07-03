@@ -3,6 +3,8 @@ import React from 'react';
 
 import { cn } from '@/lib/utils';
 
+import logo from '@/public/pet.png';
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,7 +14,10 @@ import {
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
 import { ClerkLoaded, ClerkLoading, UserButton } from '@clerk/nextjs';
-import { Loader2 } from 'lucide-react';
+import { CloudCog, Loader2 } from 'lucide-react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 const links = [
   {
@@ -91,11 +96,19 @@ const links = [
 
 export const Navigation = () => {
   return (
-    <nav className='fixed left-1/2 z-50 mx-auto flex h-[120px] w-full max-w-screen-2xl -translate-x-1/2 transform items-center justify-between'>
-      <div>Logo</div>
+    <header className='fixed left-1/2 z-50 mx-auto flex h-[120px] w-full max-w-7xl -translate-x-1/2 transform items-center justify-between px-4'>
+      <Link href='/'>
+        <Image
+          src={logo}
+          width={150}
+          height={150}
+          className='mix-blend-color-burn'
+          alt='Cat and dog logo and paw with the names of the two owner'
+        />
+      </Link>
 
       <NavigationMenu>
-        <NavigationMenuList className='flex gap-20'>
+        <NavigationMenuList className='flex gap-6'>
           {links.map(({ title, subLinks }) => (
             <NavigationMenuItem key={title}>
               <NavigationMenuTrigger className='bg-transparent text-lg'>
@@ -106,7 +119,7 @@ export const Navigation = () => {
                   {subLinks.map((subLink) => (
                     <ListItem
                       key={subLink.title}
-                      href={subLink.title.toLowerCase().split(' ').join('-')}
+                      href={`/${subLink.title.toLowerCase().split(' ').join('-')}`}
                       title={subLink.title}
                     >
                       {subLink.description}
@@ -126,7 +139,7 @@ export const Navigation = () => {
           </ClerkLoaded>
         </NavigationMenuList>
       </NavigationMenu>
-    </nav>
+    </header>
   );
 };
 
