@@ -8,6 +8,8 @@ const PetSchema = new mongoose.Schema({
   location: { type: String, required: true },
   ptraits: { type: String, required: true },
   photo: { type: String, required: true },
+  created_at: { type: Date, default: Date.now },
+  updated: { type: Date, default: Date.now },
 });
 
 export default mongoose.models.Pet || mongoose.model('Pet', PetSchema);
