@@ -7,7 +7,7 @@ import { useGSAP } from '@gsap/react';
 import { Button } from './ui/button';
 import Link from 'next/link';
 
-export const Video = ({ videoUrl, type }) => {
+export function Video({ videoUrl, type }) {
   const pet = type.toLowerCase();
 
   useGSAP(() => {
@@ -48,4 +48,4 @@ export const Video = ({ videoUrl, type }) => {
       </div>
     </div>
   );
-};
+}

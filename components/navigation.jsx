@@ -27,6 +27,7 @@ const links = [
       { title: 'All Pets', description: 'View all available pets' },
       { title: 'Dogs', description: 'View available dogs for adoption' },
       { title: 'Cats', description: 'View available cats for adoption' },
+      { title: 'Add Pet', description: 'To add pet' },
     ],
   },
   {
@@ -94,7 +95,7 @@ const links = [
   },
 ];
 
-export const Navigation = () => {
+export function Navigation() {
   return (
     <header className='fixed left-1/2 z-50 mx-auto flex h-[120px] w-full max-w-7xl -translate-x-1/2 transform items-center justify-between px-4'>
       <Link href='/'>
@@ -104,6 +105,7 @@ export const Navigation = () => {
           height={150}
           className='mix-blend-color-burn'
           alt='Cat and dog logo and paw with the names of the two owner'
+          priority
         />
       </Link>
 
@@ -141,7 +143,7 @@ export const Navigation = () => {
       </NavigationMenu>
     </header>
   );
-};
+}
 
 const ListItem = React.forwardRef(
   ({ className, title, children, ...props }, ref) => {

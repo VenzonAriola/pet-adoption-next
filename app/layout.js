@@ -1,12 +1,13 @@
 import { ClerkProvider } from '@clerk/nextjs';
 
 import { Roboto } from 'next/font/google';
-import './globals.css';
 import { Navigation } from '@/components/navigation';
+import './globals.css';
 
 const inter = Roboto({
-  weight: ['100', '300', '400', '500', '700'],
+  weight: ['400', '500', '700'],
   subsets: ['latin'],
+  preload: true,
 });
 
 export const metadata = {
@@ -18,7 +19,9 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang='en'>
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+          <main className='h-full'>{children}</main>
+        </body>
       </html>
     </ClerkProvider>
   );

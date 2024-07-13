@@ -1,6 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+
+import Link from 'next/link';
+import Image from 'next/image';
 
 import {
   Select,
@@ -9,14 +13,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import Image from 'next/image';
 
 import dogPhoto from '@/public/dog.jpg';
-import { CloudCog } from 'lucide-react';
 
-const Pets = ({ data }) => {
+export function Pets({ data }) {
   const [sortBy, setSortBy] = useState('');
 
   const router = useRouter();
@@ -42,10 +42,7 @@ const Pets = ({ data }) => {
       <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3'>
         {data.map((pet) => (
           <div className='relative w-[300px]' key={pet._id}>
-            <Link
-              href={`/all-pets/${pet._id}`}
-              className='block h-full w-full bg-red-500'
-            >
+            <Link href={`/all-pets/${pet._id}`} className='block h-full w-full'>
               <Image
                 // TODO: will be change later
                 src={dogPhoto}
@@ -60,5 +57,5 @@ const Pets = ({ data }) => {
       </div>
     </>
   );
-};
+}
 export default Pets;
