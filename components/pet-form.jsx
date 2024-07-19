@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import Image from 'next/image';
-import { CldUploadButton } from 'next-cloudinary';
+import { CldImage, CldUploadButton } from 'next-cloudinary';
 
 import { Form } from '@/components/ui/form';
 
@@ -92,12 +92,18 @@ export function AddPetForm() {
         options={{ multiple: true }}
         onUpload={handleUpload}
         uploadPreset='pet-adoption'
-        className='dotter mb-8 grid h-48 w-full place-items-center border-2 border-dotted bg-slate-100'
+        className='dotter mb-8 grid h-[300px] w-full place-items-center overflow-hidden border-2 border-dotted bg-slate-100'
       >
         {!imgUrl ? (
           <ImagePlus />
         ) : (
-          <Image src={imgUrl} height={300} width={300} alt='uploaded image' />
+          <CldImage
+            src={imgUrl}
+            height={300}
+            width={300}
+            alt='uploaded image'
+            className='w-full'
+          />
         )}
       </CldUploadButton>
       <Form {...form}>

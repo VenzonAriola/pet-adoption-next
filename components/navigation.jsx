@@ -14,7 +14,7 @@ import {
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
 import { ClerkLoaded, ClerkLoading, UserButton } from '@clerk/nextjs';
-import { CloudCog, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
