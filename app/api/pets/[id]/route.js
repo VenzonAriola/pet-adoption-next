@@ -20,7 +20,7 @@ export async function PUT(request, { params }) {
     location: newLocation,
     ptraits: newptraits,
     photo: newPhoto,
-  } = await request.json;
+  } = await request.json();
   await dbConnect();
   await Pet.findByIdAndUpdate(id, {
     newpetType,
@@ -31,7 +31,7 @@ export async function PUT(request, { params }) {
     newptraits,
     newPhoto,
   });
-  return NextResponse, json({ message: 'Pets Updated' }, { status: 200 });
+  return NextResponse.json({ message: 'Pets Updated' }, { status: 200 });
 }
 
 export async function DELETE(request) {
